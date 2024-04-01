@@ -20,7 +20,7 @@ router.post("/", (req, res) => {
 router.put("/:id?", (req, res) => {
 	let id = req.params.id;
 	if (id) {
-		chirpsStore.UpdateChirp(id);
+		chirpsStore.UpdateChirp(id, req.body);
 		res.send(200);
 	} else {
 		res.send("Chirp not found");
@@ -31,7 +31,7 @@ router.delete("/:id?", (req, res) => {
 	let id = req.params.id;
 	if (id) {
 		chirpsStore.DeleteChirp(id);
-		res.send(200);
+		res.send(204);
 	} else {
 		res.send("No such chirp found");
 	}
